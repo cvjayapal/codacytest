@@ -1,0 +1,10 @@
+# .taskcat.yml
+version: '1.0'
+globals:
+  region: us-east-1  # Choose a region for testing your CloudFormation templates
+  capability: CAPABILITY_IAM  # Add necessary capabilities, like CAPABILITY_IAM if required
+stacks:
+  test-stack:
+    template: templates/vpc.yml  # Path to your CloudFormation template
+    parameters:
+      MyParam: MyValue  # Example parameters if required by your template
