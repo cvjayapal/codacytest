@@ -1,7 +1,8 @@
-stacks:
-  test-stack:
+version: 1
+tests:
+  - name: codacytest
     template: templates/vpc.yml
+    regions:
+      - us-east-1
     capabilities:
       - CAPABILITY_IAM
-regions:
-  - us-east-1
