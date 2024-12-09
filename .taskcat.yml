@@ -1,4 +1,7 @@
-test:
-  name: codacytest  # Name of your test
-  region: us-east-1  # AWS region for testing
-  template: templates/vpc.yml  # Path to your CloudFormation template
+stacks:
+  test-stack:
+    template: templates/vpc.yml
+    capabilities:
+      - CAPABILITY_IAM
+regions:
+  - us-east-1
