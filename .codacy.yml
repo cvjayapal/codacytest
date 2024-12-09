@@ -1,0 +1,22 @@
+# .codacy.yml for configuring Codacy project settings
+version: 2
+# Optional: Configure the repository analysis tools
+tools:
+  - yamllint
+  - taskcat
+  - coverage
+
+# Optional: Define the Codacy Coverage Reporter tool (for uploading coverage reports)
+coverage_reporters:
+  - cobertura
+  - json
+
+# Optional: Set up specific configurations for each tool
+yamllint:
+  severity: warning # Possible values: error, warning, info, ignore
+taskcat:
+  severity: error    # The severity level for Taskcat issues
+coverage:
+  threshold: 80      # Set the minimum required coverage threshold (percentage)
+  # Alternatively, you can specify the exact file that contains the coverage information
+  coverage_report_file: cobertura-report.xml
