@@ -6,5 +6,5 @@ globals:
 stacks:
   test-stack:
     template: templates/vpc.yml  # Path to your CloudFormation template
-    #parameters:
-      #MyParam: MyValue  # Example parameters if required by your template
+    parameters:
+      MyParam: MyValue  # Example parameters if required by your template
