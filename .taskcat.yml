@@ -1,9 +1,9 @@
 # .taskcat.yml for Taskcat version 0.9.x
 project:
-  name: codacytest  # The name of your project
+  name: codacytest  # Name of your project
 
 regions:
-  - us-east-1  # AWS region where the stack will be tested
+  - us-east-1  # The AWS region(s) where the stack will be tested
 
 templates:
   - template: templates/vpc.yml  # Path to your CloudFormation template
