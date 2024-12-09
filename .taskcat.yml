@@ -1,4 +1,3 @@
-version: 1
 tests:
   - name: codacytest
     template: templates/vpc.yml
