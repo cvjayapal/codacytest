@@ -1,11 +1,9 @@
-# .taskcat.yml
-version: '1.0'
-globals:
-  regions: 
-    - us-east-1  # Choose a region for testing your CloudFormation templates
-  #capability: CAPABILITY_IAM  # Add necessary capabilities, like CAPABILITY_IAM if required
-stacks:
-  test-stack:
-    template: templates/vpc.yml  # Path to your CloudFormation template
-    parameters:
-      MyParam: MyValue  # Example parameters if required by your template
+# .taskcat.yml for Taskcat version 0.9.x
+project:
+  name: codacytest  # The name of your project
+
+regions:
+  - us-east-1  # AWS region where the stack will be tested
+
+templates:
+  - template: templates/vpc.yml  # Path to your CloudFormation template
