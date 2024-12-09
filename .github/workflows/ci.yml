@@ -1,0 +1,51 @@
+name: CloudFormation Testing and Codacy Coverage
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  taskcat-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Taskcat
+        run: |
+          pip install taskcat
+
+      - name: Run Taskcat to Test CloudFormation Templates
+        run: |
+          taskcat test run
+
+  linting:
+    runs-on: ubuntu-latest
+    needs: taskcat-test
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install yamllint
+        run: |
+          pip install yamllint
+
+      - name: Lint CloudFormation Templates
+        run: |
+          yamllint templates/ --format parsable > linting-report.txt
+
+      - name: Convert Linting Report to Cobertura Format
+        run: |
+          python3 convert_lint_report_to_cobertura.py
+
+      - name: Upload Coverage Report to Codacy
+        run: |
+          java -jar codacy-coverage-reporter.jar report \
+            --coverage-reporter-path cobertura-report.xml \
+            --language YAML
+        env:
+          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
